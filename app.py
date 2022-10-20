@@ -99,7 +99,7 @@ def register():
             db.session.add(new_user)
             db.session.commit()
             flash("User created!", 'success')
-            return redirect('/')
+            return redirect('/login')
         except Exception as e:
             db.session.rollback()
             flash(f"Error occurred!, {str(e)}", 'danger')
