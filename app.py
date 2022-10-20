@@ -95,11 +95,15 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         try:
-            new_user = User(username=form.username.data, hashed_password=bcrypt.generate_password_hash(form.password.data))
-            db.session.add(new_user)
-            db.session.commit()
-            flash("User created!", 'success')
-            return redirect('/login')
+            if User.query.filter_by(username=form.username.data).first():
+                flash("User already existed!", 'info')
+                return redirect('/register')
+            else:
+                new_user = User(username=form.username.data, hashed_password=bcrypt.generate_password_hash(form.password.data))
+                db.session.add(new_user)
+                db.session.commit()
+                flash("User created! Login again to access the app.", 'success')
+                return redirect('/login')
         except Exception as e:
             db.session.rollback()
             flash(f"Error occurred!, {str(e)}", 'danger')
