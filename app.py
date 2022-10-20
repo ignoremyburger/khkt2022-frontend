@@ -72,14 +72,19 @@ def login():
         return redirect('/')
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if bcrypt.check_password_hash(user.hashed_password, form.password.data):
-            login_user(user)
-            flash("Authenticated!", 'success')
-            return redirect('/')
-        else:
+        try:
+            user = User.query.filter_by(username=form.username.data).first()
+            if bcrypt.check_password_hash(user.hashed_password, form.password.data):
+                login_user(user)
+                flash("Authenticated!", 'success')
+                return redirect('/')
+        except AttributeError:
             db.session.rollback()
             flash("Incorrect Username or Password", 'danger')
+            return redirect('/login')
+        except Exception as e:
+            db.session.rollback()
+            flash("Something went wrong, please try again!")
             return redirect('/login')
     return render_template('login.html', form=form)
 
