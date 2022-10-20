@@ -1,0 +1,15 @@
+#login-page{
+    height: 100%;
+    width: 100%;
+    background-image: url('https://raw.githubusercontent.com/buibaohoang06/readbooking/master/static/images/background.jpg');
+    background-size: cover;
+    position: absolute;
+}
+#login-block{
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">{% endblock %}
+{% block body %}
+<div id="register-page">
+    <div class="position-absolute top-50 start-50 translate-middle" id="register-block">
+        <form method="POST" action="{{ url_for('register') }}">
+            <h4>Welcome aboard!</h4>
+            {{ form.csrf_token() }}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                {{ form.username(class_="form-control", id_="username") }}
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                {{ form.password(class_="form-control", id_="password") }}
+            </div>
+            {{ form.submit(class_="btn btn-primary") }}
+        </form>
+    </div>
+</div>
+{% endblock %}
