@@ -60,7 +60,7 @@ def dashboard():
         if request.args.get('option') == "remove":
             item_uuid = request.args.get('uuid')
             try:
-                db.delete_one({"notification_id": request.args.get('uuid')})
+                db.delete_one({"notification_id": item_uuid})
                 flash("Item deleted!", 'danger')
             except Exception as e:
                 flash("Cannot delete object!" + str(e), 'danger')
