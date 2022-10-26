@@ -1,5 +1,59 @@
 {% extends 'base.html' %}
 {% block body %}
+<div id="dashboard" class="container-fluid text-center">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div id="nav-inline">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Bảng điều khiển</a>
+                        </li>  
+                    </ul>
+                </div>
+            </div>
+            <div id="user-info">
+                Xin chào, {{ user }}!
+                 <button type="button" class="btn btn-danger" onclick="window.location.href='/logout'">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <div id="dashboard-content-wrapper" class="container">
+        <div id="history">
+            <h3>Thống kê tổng quan</h3>
+            <p>Tổng số báo cáo: {{ total }}</p>
+            {% if status %}
+                <p class="text-success"><b>Đã kết nối tới cơ sở dữ liệu</b></p>
+            {% else %}
+                <p class="text-danger"><b>Đã ngắt kết nối tới cơ sở dữ liệu</b></p>
+            {% endif %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">UUID</th>
+                        <th scope="col">Vị trí</th>
+                        <th scope="col">PPM trong không khí</th>
+                        <th scope="col">Thời gian</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rows in records %}
+                        <tr>
+                            <th scope="row">{{ rows.notification_id }}</th>
+                            <td>{{ rows.location }}</td>
+                            <td>{{ rows.current_stats }}</td>
+                            <td>{{ rows.time }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!--
 <nav class="navbar navbar-expand-lg" id="navbar" style="border-bottom: solid; border-width: 0.5px; border-color: lightgray">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin: auto;">
@@ -26,4 +80,5 @@
         </div>
     {% endfor %}
 </div>
+-->
 {% endblock %}

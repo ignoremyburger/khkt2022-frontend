@@ -10,4 +10,56 @@ body{
     height: 100%;
     width: 100%;
     margin: 0;
+    background-color: #E8EFF7; 
 }
+#dashboard{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+#dashboard > nav{
+    width: 50%;
+    background-color: #294CB2;
+    margin: 20px auto;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    color: white;
+    padding: 10px;
+}
+#dashboard > nav > div{
+    width: 100%;
+}
+#dashboard > nav > div > #navbarSupportedContent > #nav-inline{
+    display: inline-block;
+    float: left;
+}
+#dashboard > nav > div > #navbarSupportedContent > #user-info{
+    display: inline-block;
+    float: right;
+}
+#dashboard > nav > div > #navbarSupportedContent > #nav-inline > ul > li > a{
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 20px 10px 20px;
+}
+#dashboard > nav > div > #navbarSupportedContent > #nav-inline > ul > li > a:hover{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    color: #294CB2;
+}
+#dashboard > nav > div > #navbarSupportedContent > #nav-inline > ul > li > a{
+    color: white;
+}
+#dashboard-content-wrapper{
+    margin-top: 50px;
+}
+#statistics, #history{
+    background-color: white;
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; 
+}   

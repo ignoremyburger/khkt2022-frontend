@@ -1,3 +1,4 @@
+from sqlite3 import OperationalError
 from flask import Flask
 from flask_login import LoginManager
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
@@ -6,7 +7,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import ValidationError, InputRequired
 from flask_bcrypt import Bcrypt
-from pymongo import MongoClient
+from pymongo import MongoClient, errors 
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -45,16 +46,17 @@ class User(db.Model, UserMixin):
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def dashboard():
+    status = False
     all_records = ""
     #Connect to MongoDB
     try:
         client = MongoClient("mongodb+srv://admin:eCCvjBufsXE7RnzH@cluster0.r8alamr.mongodb.net/?retryWrites=true&w=majority")
         db = client.maindb.info
         all_records = db.find()
-        flash("Connected to MongoDB", 'success')
-    except Exception as e:
-        flash("Failed to establish connection to MongoDB", 'danger')
-        print(str(e))
+        status = True
+    except Exception:
+        flash('Failed', 'danger')
+        return redirect('/')
 
     if request.method == 'GET':
         if request.args.get('option') == "remove":
@@ -64,7 +66,7 @@ def dashboard():
                 flash("Item deleted!", 'danger')
             except Exception as e:
                 flash("Cannot delete object!" + str(e), 'danger')
-    return render_template('dashboard.html', records=all_records)
+    return render_template('dashboard.html', records=all_records, user=current_user.username, total=db.count_documents({}), status=status)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -117,3 +119,7 @@ def logout():
     logout_user()
     flash("Logged Out!", 'info')
     return redirect('/login')
+
+#Remove on production 
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=80)

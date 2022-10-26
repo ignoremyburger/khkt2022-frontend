@@ -4,17 +4,18 @@
 <div id="login-page">
     <div class="position-absolute top-50 start-50 translate-middle" id="login-block">
         <form method="POST" action="{{ url_for('login') }}">
-            <h4>Welcome back, Writer!</h4>
+            <img style="width: 100px; height: 100px; margin: auto;" src="https://downloadlogomienphi.com/sites/default/files/logos/download-logo-vector-vinschool-mien-phi.jpg">
+            <h4>Trang đăng nhập.</h4>
             {{ form.csrf_token() }}
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">Tên người dùng</label>
                 {{ form.username(class_="form-control", id_="username") }}
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Mật khẩu</label>
                 {{ form.password(class_="form-control", id_="password") }}
             </div>
-            {{ form.submit(class_="btn btn-primary") }}
+            {{ form.submit(class_="btn btn-primary", value_="Đăng nhập") }}
         </form>
     </div>
 </div>

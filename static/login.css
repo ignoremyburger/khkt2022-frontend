@@ -13,3 +13,8 @@
     border-radius: 15px 15px 15px 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
+form{
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
