@@ -50,7 +50,7 @@ def dashboard():
     all_records = ""
     #Connect to MongoDB
     try:
-        client = MongoClient("mongodb+srv://admin:eCCvjBufsXE7RnzH@cluster0.r8alamr.mongodb.net/?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://admin:N81t92meale5uKnm@cluster0.r8alamr.mongodb.net/?retryWrites=true&w=majority")
         db = client.maindb.info
         all_records = db.find()
         status = True
