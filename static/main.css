@@ -52,9 +52,13 @@ body{
     color: white;
 }
 #dashboard-content-wrapper{
-    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
 }
 #statistics, #history{
+    overflow: scroll;
     background-color: white;
     width: 100%;
     height: fit-content;
