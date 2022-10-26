@@ -10,3 +10,20 @@ Có 2 phần chính trong dự án này: Bộ cảm biến và Website
   <li>Phần Website sử dụng framework Flask của Python để tạo nên một Website có phần backend có thể lấy dữ liệu từ MongoDB và hiển thị. Website được host trên Heroku với URL là: <a href="https://khkt2022.herokuapp.com">khkt2022.herokuapp.com</a></li>
 </ul>
 </p>
+<h3>⌨️ > Các hình ảnh</h3>
+<p>
+<h5>CLI Cảm biến</h5>
+<img src="https://i.ibb.co/XsJZsx7/Screenshot-2022-10-26-215542.png"><br>
+<h5>Lời nhắn trên Discord</h5>
+<img src="https://i.ibb.co/wLYKpzm/Screenshot-2022-10-26-215746.png"><br>
+<h5>Trang Web</h5>
+<img src="https://i.ibb.co/BfCgCZM/Screenshot-2022-10-26-215900.png"><br>
+</p>
+<h3>Tóm tắt lại</h3>
+<p>
+<ul>
+  <li>Các công nghệ đã được sử dụng: Python, Flask (Framework), Arduino C</li>
+  <li>Phần cứng: Raspberry Pi, Arduino Nano, Flying Fish MQ2 Gas Detector</li>
+  <li>Webhook: Discord</li>
+</ul>
+</p>
